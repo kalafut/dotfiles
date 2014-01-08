@@ -333,12 +333,12 @@ Bundle 'L9'
 Bundle 'scrooloose/nerdtree'
 Bundle 'firat/vim-bufexplorer'
 Bundle 'vim-scripts/Colour-Sampler-Pack'
-Bundle 'Align'
+"Bundle 'Align'
 Bundle 'mileszs/ack.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
+"Bundle 'honza/snipmate-snippets'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
@@ -347,6 +347,8 @@ Bundle 'mattn/emmet-vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'groenewege/vim-less'
 Bundle 'plasticboy/vim-markdown'
+Bundle 'bling/vim-airline'
+Bundle 'sampsyo/autolink.vim'
 "Bundle 'digitaltoad/vim-jade'
 "Bundle 'jnwhiteh/vim-golang'
 "Bundle 'scrooloose/syntastic'
@@ -373,8 +375,10 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Monaco:h14
+    set gfn=DejaVu\ Sans\ Mono:h14
+
 endif
+
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -453,3 +457,5 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
