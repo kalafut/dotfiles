@@ -314,44 +314,42 @@ map <leader>pp :setlocal paste!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype off
 
-if has("unix")
-    set rtp+=~/.vim/bundle/vundle/
-else
-    set rtp+=~/vimfiles/bundle/vundle/
-end
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'rking/ag.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'L9'
-Bundle 'scrooloose/nerdtree'
-Bundle 'firat/vim-bufexplorer'
-Bundle 'vim-scripts/Colour-Sampler-Pack'
-"Bundle 'Align'
-Bundle 'mileszs/ack.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-"Bundle 'honza/snipmate-snippets'
-Bundle 'bitc/vim-bad-whitespace'
-Bundle 'ervandew/supertab'
-Bundle 'kien/ctrlp.vim'
-Bundle 'miripiruni/CSScomb-for-Vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'groenewege/vim-less'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'bling/vim-airline'
-Bundle 'sampsyo/autolink.vim'
-"Bundle 'digitaltoad/vim-jade'
-"Bundle 'jnwhiteh/vim-golang'
-"Bundle 'scrooloose/syntastic'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'rking/ag.vim'
+"Plugin 'dimasg/vim-mark'
+Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'L9'
+Plugin 'scrooloose/nerdtree'
+Plugin 'firat/vim-bufexplorer'
+Plugin 'vim-scripts/Colour-Sampler-Pack'
+"Plugin 'Align'
+Plugin 'mileszs/ack.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+"Plugin 'honza/snipmate-snippets'
+Plugin 'bitc/vim-bad-whitespace'
+Plugin 'ervandew/supertab'
+Plugin 'kien/ctrlp.vim'
+Plugin 'miripiruni/CSScomb-for-Vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'groenewege/vim-less'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'bling/vim-airline'
+Plugin 'sampsyo/autolink.vim'
+"Plugin 'digitaltoad/vim-jade'
+"Plugin 'jnwhiteh/vim-golang'
+"Plugin 'scrooloose/syntastic'
+call vundle#end()
 filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
