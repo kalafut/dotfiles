@@ -24,6 +24,7 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
+"map <leader><leader> <c-^>
 " Fast saving
 nmap <leader>w :w!<cr>
 
@@ -56,7 +57,7 @@ set ruler
 set number
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " display incomplete commands
 set showcmd
@@ -313,7 +314,7 @@ map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-map <leader><leader> <c-^>
+"map <leader><leader> <c-^>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
