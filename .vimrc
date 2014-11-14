@@ -30,7 +30,7 @@ nmap <leader>w :w!<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+"command W w !sudo tee % > /dev/null
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -43,7 +43,7 @@ set so=7
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.obj
+set wildignore=*.o,*~,*.pyc,*.obj,*.h2i,*.via
 if has("win16") || has("win32")
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
@@ -316,6 +316,10 @@ map <leader>pp :setlocal paste!<cr>
 
 "map <leader><leader> <c-^>
 
+" Gary Bernhardt's trick to insert the path of the current
+" buffer when on the command line
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -333,6 +337,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'freitass/todo.txt-vim'
 Plugin 'L9'
 Plugin 'scrooloose/nerdtree'
 Plugin 'firat/vim-bufexplorer'
@@ -353,6 +358,9 @@ Plugin 'groenewege/vim-less'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'bling/vim-airline'
 Plugin 'sampsyo/autolink.vim'
+"Plugin 'Shougo/unite.vim'
+"Plugin 'sjbach/lusty'
+"Plugin 'Shougo/vimproc.vim'
 "Plugin 'digitaltoad/vim-jade'
 "Plugin 'jnwhiteh/vim-golang'
 "Plugin 'scrooloose/syntastic'
