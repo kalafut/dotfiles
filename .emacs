@@ -19,14 +19,6 @@
 (setq sunshine-location "97140,USA")
 (setq sunshine-show-icons t)
 
-;; (if (eq system-type 'windows-nt')
-;; ;;      (progn
-;; ;;        (default ((t (:inherit nil :stipple nil :background "black" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "nil" :family "DejaVu Sans Mono"))))
-;; ;;        (default ((t (:inherit nil :stipple nil :background "black" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "nil" :family "DejaVu Sans Mono"))))))
-;;
-;; (setq c-default-style "whitesmith"
-;;
-
 ; Turn on visual line mode
 (global-visual-line-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -51,3 +43,6 @@
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
+(load-theme 'wheatgrass)
+
+(set-default-font "Ubuntu Mono 16")
