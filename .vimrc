@@ -32,6 +32,9 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 "command W w !sudo tee % > /dev/null
 
+" Switch to alternate file
+map <C-Tab> :bnext<cr>
+map <C-S-Tab> :bprevious<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -43,7 +46,7 @@ set so=7
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.obj,*.h2i,*.via
+set wildignore=*.o,*~,*.pyc,*.obj,*.o32,*.h2i,*.via
 if has("win16") || has("win32")
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
@@ -170,13 +173,20 @@ map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+
+" Cursor motion while in Insert mode
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-h> <C-o>h
+inoremap <C-l> <C-o>l
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+"map <leader>bd :Bclose<cr>
+nnoremap <leader>bd :bp\|bd #<CR>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
@@ -197,7 +207,7 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
-  set switchbuf=useopen,usetab,newtab
+  set switchbuf=useopen,usetab ",newtab
   set stal=2
 catch
 endtry
@@ -320,6 +330,9 @@ map <leader>pp :setlocal paste!<cr>
 " buffer when on the command line
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+" Kill current buffer without closing split
+"nnoremap <C-c> :bp\|bd #<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -328,16 +341,16 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'kalafut/vim-taskjuggler'
+Plugin 'tpope/vim-surround'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'vimoutliner/vimoutliner'
 Plugin 'rking/ag.vim'
 Plugin 'dimasg/vim-mark'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'freitass/todo.txt-vim'
 Plugin 'L9'
 Plugin 'scrooloose/nerdtree'
 Plugin 'firat/vim-bufexplorer'
@@ -347,7 +360,6 @@ Plugin 'mileszs/ack.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-"Plugin 'honza/snipmate-snippets'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'ervandew/supertab'
 Plugin 'kien/ctrlp.vim'
@@ -358,14 +370,14 @@ Plugin 'groenewege/vim-less'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'bling/vim-airline'
 Plugin 'sampsyo/autolink.vim'
-"Plugin 'Shougo/unite.vim'
-"Plugin 'sjbach/lusty'
-"Plugin 'Shougo/vimproc.vim'
-"Plugin 'digitaltoad/vim-jade'
-"Plugin 'jnwhiteh/vim-golang'
-"Plugin 'scrooloose/syntastic'
+Plugin 'fatih/vim-go'
+Plugin 'scrooloose/syntastic'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'jason0x43/vim-js-indent'
 call vundle#end()
 filetype plugin indent on
+
+let g:go_fmt_command = "goimports"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -474,3 +486,4 @@ endfunction
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 set mouse=a
+set clipboard=unnamed
