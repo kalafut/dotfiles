@@ -19,6 +19,10 @@
 (setq sunshine-location "97140,USA")
 (setq sunshine-show-icons t)
 
+
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(helm-mode 1)
 ; Turn on visual line mode
 (global-visual-line-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -28,8 +32,7 @@
 (setq org-directory "~/Dropbox/org")
 (setq org-mobile-directory "~/Dropbox/org_mobile")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-;(setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
-;(setq org-mobile-directory "~/Dropbox/MobileOrg")
+(setq org-mobile-inbox-for-pull "~/Dropbox/org_mobile/inbox.org")
 (setq org-mobile-files '("~/Dropbox/org/home.org" "~/Dropbox/org/work.org"))
 
 ;; Org mode setup
@@ -46,3 +49,15 @@
 (load-theme 'wheatgrass)
 
 (set-default-font "Ubuntu Mono 16")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Dropbox/org/home.org" "~/Dropbox/org/work.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
