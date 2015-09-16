@@ -24,7 +24,8 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
-"map <leader><leader> <c-^>
+map <leader><leader> <c-^>
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
@@ -350,7 +351,7 @@ Plugin 'dimasg/vim-mark'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'Lokaltog/vim-easymotion'
 Plugin 'L9'
 Plugin 'scrooloose/nerdtree'
 Plugin 'firat/vim-bufexplorer'
