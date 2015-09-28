@@ -343,15 +343,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'kalafut/vim-taskjuggler'
+
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+set rtp+=~/.vim/bundle/vim-snippets/UltiSnips
+
 Plugin 'tpope/vim-surround'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'vimoutliner/vimoutliner'
 Plugin 'rking/ag.vim'
 Plugin 'dimasg/vim-mark'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'jelera/vim-javascript-syntax'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'Lokaltog/vim-easymotion'
 Plugin 'L9'
 Plugin 'scrooloose/nerdtree'
 Plugin 'firat/vim-bufexplorer'
@@ -360,10 +364,8 @@ Plugin 'vim-scripts/Colour-Sampler-Pack'
 Plugin 'mileszs/ack.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'ervandew/supertab'
-Plugin 'kien/ctrlp.vim'
 Plugin 'miripiruni/CSScomb-for-Vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -375,11 +377,18 @@ Plugin 'fatih/vim-go'
 Plugin 'scrooloose/syntastic'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jason0x43/vim-js-indent'
-Plugin 'junegunn/goyo.vim'
+Plugin 'vim-scripts/jam.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+
 call vundle#end()
 filetype plugin indent on
 
 let g:go_fmt_command = "goimports"
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -418,7 +427,7 @@ set ffs=unix,dos,mac
 " => Work stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win16") || has("win32")
-    so ~\Desktop\vimdir.vim
+    "so ~\Desktop\vimdir.vim
     set gfn=Source_Code_Pro:h11:cANSI
     so $VIMRUNTIME/mswin.vim
     set cinoptions=>s,e0,n0,f0,{1s,}0,^-s,L-1,:s,=s,l0,b0,gs,hs,ps,ts,is,+s,c3,C0,/0,(2s,us,U0,w0,W0,m0,j0,J0,)20,*70,#0
