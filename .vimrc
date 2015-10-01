@@ -379,6 +379,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'jason0x43/vim-js-indent'
 Plugin 'vim-scripts/jam.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'davidoc/taskpaper.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -504,3 +505,6 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ew :EraseBadWhitespace<cr>
 inoremap jk <esc>
+
+nnoremap <leader>wtl :vsplit ~/Dropbox/taskpaper/work.taskpaper<cr>
+nnoremap <leader>htl :vsplit ~/Dropbox/taskpaper/home.taskpaper<cr>
