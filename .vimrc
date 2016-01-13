@@ -345,7 +345,7 @@ call vundle#begin()
 Plugin 'kalafut/vim-taskjuggler'
 
 " Snippets
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 set rtp+=~/.vim/bundle/vim-snippets/UltiSnips
 
@@ -353,7 +353,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rking/ag.vim'
 Plugin 'dimasg/vim-mark'
-"Plugin 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 "Plugin 'jelera/vim-javascript-syntax'
 Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
@@ -380,11 +380,19 @@ Plugin 'jason0x43/vim-js-indent'
 Plugin 'vim-scripts/jam.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidoc/taskpaper.vim'
+Plugin 'nathangrigg/vim-beancount'
+Plugin 'kalafut/vim-sift'
+Plugin 'cespare/vim-toml'
+Plugin 'ledger/vim-ledger'
+Plugin 'mxw/vim-jsx'
+Plugin 'chrisbra/csv.vim'
 
 call vundle#end()
 filetype plugin indent on
 
 let g:go_fmt_command = "goimports"
+"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -508,3 +516,10 @@ inoremap jk <esc>
 
 nnoremap <leader>wtl :vsplit ~/Dropbox/taskpaper/work.taskpaper<cr>
 nnoremap <leader>htl :vsplit ~/Dropbox/taskpaper/home.taskpaper<cr>
+
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+map <leader>ren :GoRename<cr>
+
+" Set per-fileype indentation
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
