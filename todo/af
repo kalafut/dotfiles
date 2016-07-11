@@ -1,0 +1,6 @@
+#! /bin/bash
+
+shift
+$TODO_FULL_SH add "$@"
+$TODO_FULL_SH bump
+
