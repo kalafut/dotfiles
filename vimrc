@@ -23,6 +23,8 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = ","
+let g:maplocalleader = ","
 
 map <leader><leader> <c-^>
 
@@ -41,13 +43,14 @@ map <C-S-Tab> :bprevious<cr>
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set so=5
 
 " Turn on the WiLd menu
 set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,*.obj,*.o32,*.h2i,*.via
+set wildignore+=*/eggs/*
 if has("win16") || has("win32")
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
@@ -108,6 +111,8 @@ set foldcolumn=1
 " Highlight current line
 set cursorline
 
+" disable folding
+set nofoldenable    " disable folding
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -132,13 +137,16 @@ set noswapfile
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
-set expandtab
+"Disable if vim-sleuth works
+"set expandtab
 
 " Be smart when using tabs ;)
-set smarttab
+"Disable if vim-sleuth works
+"set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
+"Disable if vim-sleuth works
+"set shiftwidth=4
 set tabstop=4
 
 " Linebreak on 500 characters
@@ -260,9 +268,6 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
-" CR to save file
-nmap <CR> :write<CR>
-
 
 map <F2> <ESC>:NERDTreeToggle<RETURN>
 map <F3> <ESC>:TlistToggle<RETURN>
@@ -340,15 +345,19 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 
 Plugin 'kalafut/vim-taskjuggler'
 
 " Snippets
 "Plugin 'SirVer/ultisnips'
+Plugin 'vimwiki/vimwiki'
+Plugin 'tpope/vim-sleuth'
 Plugin 'honza/vim-snippets'
 set rtp+=~/.vim/bundle/vim-snippets/UltiSnips
 
+Plugin 'rizzatti/dash.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rking/ag.vim'
@@ -378,14 +387,17 @@ Plugin 'scrooloose/syntastic'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jason0x43/vim-js-indent'
 Plugin 'vim-scripts/jam.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidoc/taskpaper.vim'
-Plugin 'nathangrigg/vim-beancount'
+"Plugin 'nathangrigg/vim-beancount'
 Plugin 'kalafut/vim-sift'
 Plugin 'cespare/vim-toml'
 Plugin 'ledger/vim-ledger'
 Plugin 'mxw/vim-jsx'
-Plugin 'chrisbra/csv.vim'
+"Plugin 'chrisbra/csv.vim'
+"Plugin 'rust-lang/rust.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'jremmen/vim-ripgrep'
 
 call vundle#end()
 filetype plugin indent on
@@ -421,6 +433,7 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
     set gfn=DejaVu\ Sans\ Mono:h14
+    set gfn=Source\ Code\ Pro:h14
 
 endif
 
@@ -435,11 +448,9 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Work stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("win16") || has("win32")
-    "so ~\Desktop\vimdir.vim
-    set gfn=Source_Code_Pro:h11:cANSI
-    so $VIMRUNTIME/mswin.vim
-    set cinoptions=>s,e0,n0,f0,{1s,}0,^-s,L-1,:s,=s,l0,b0,gs,hs,ps,ts,is,+s,c3,C0,/0,(2s,us,U0,w0,W0,m0,j0,J0,)20,*70,#0
+let username = substitute(system('whoami'), '\n', '', '')
+if username == "jameskalafut"
+    set gfn=Source_Code_Pro:h16
     set errorformat+=%f!%l!%m
 endif
 
@@ -507,12 +518,11 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 set mouse=a
 set clipboard=unnamed
-let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_working_path_mode = 'ra'
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ew :EraseBadWhitespace<cr>
-inoremap jk <esc>
 
 nnoremap <leader>wtl :vsplit ~/Dropbox/taskpaper/work.taskpaper<cr>
 nnoremap <leader>htl :vsplit ~/Dropbox/taskpaper/home.taskpaper<cr>
@@ -521,5 +531,17 @@ set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 map <leader>ren :GoRename<cr>
 
 " Set per-fileype indentation
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
+"Disable if vim-sleuth works
+"autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+"autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
+autocmd FileType Python setlocal tabstop=4
+
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+"let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
+:nmap <Leader>wf <Plug>VimwikiFollowLink
+
+" CR to save file
+nmap <CR> :write<CR>
+
+" NEW!!!!!!!!
+set path+=**
