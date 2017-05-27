@@ -104,8 +104,6 @@ alias dc=docker-compose
 
 # Thanks to macOS Sierra, we have to do this every time now
 #ssh-add -A
-alias scalar_bundle='git archive --format=tar develop | gzip -9 > scalar-api.tar.gz'
-alias scalar_push='scp scalar-api.tar.gz jkalafut@scalar-api:/tmp/scalar-api.tar.gz'
 alias ta="task add"
 #function ta() {
 #   task add $*

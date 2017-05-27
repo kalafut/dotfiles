@@ -54,7 +54,7 @@ set wildignore+=*/eggs/*
 if has("win16") || has("win32")
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
-    set wildignore+=.git\*,.hg\*,.svn\*
+    set wildignore+=.git\*,.hg\*,.svn\*,*/node_modules/*,*/lib/*,*/bin/*
 endif
 
 "Always show current position
@@ -112,8 +112,7 @@ set foldcolumn=1
 set cursorline
 
 " disable folding
-set nofoldenable    " disable folding
-
+set nofoldenable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Highlight trailing whitespace
@@ -345,7 +344,6 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 
 Plugin 'kalafut/vim-taskjuggler'
@@ -375,9 +373,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'ervandew/supertab'
-Plugin 'miripiruni/CSScomb-for-Vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'groenewege/vim-less'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'bling/vim-airline'
@@ -389,7 +385,6 @@ Plugin 'jason0x43/vim-js-indent'
 Plugin 'vim-scripts/jam.vim'
 "Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidoc/taskpaper.vim'
-"Plugin 'nathangrigg/vim-beancount'
 Plugin 'kalafut/vim-sift'
 Plugin 'cespare/vim-toml'
 Plugin 'ledger/vim-ledger'
