@@ -1,6 +1,8 @@
 #!/bin/bash
 
-ln -sf ~/dotfiles/zshenv ~/.zshenv
-ln -sf ~/dotfiles/zshrc ~/.zshrc
-ln -sf ~/dotfiles/vimrc ~/.vimrc
-ln -sf ~/dotfiles/gvimrc ~/.gvimrc
+dir=~/dotfiles
+files="vimrc gvimrc zshrc zshenv taskrc"
+
+for file in $files; do
+    ln -sf $dir/$file ~/.$file
+done
