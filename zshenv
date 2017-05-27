@@ -8,6 +8,6 @@ fi
 # goes in .zshrc
 #
 # TODO: fix path
-export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin
 export GOPATH=$HOME/go
+export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Frameworks/Mono.framework/Versions/Current/bin/:/usr/local/go/bin:/opt/openresty/nginx/sbin:$GOPATH/bin
 export VISUAL=vim

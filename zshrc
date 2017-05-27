@@ -97,4 +97,16 @@ source /usr/local/bin/virtualenvwrapper.sh
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
-alias t=todo.sh
+alias t=task
+alias dc=docker-compose
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Thanks to macOS Sierra, we have to do this every time now
+#ssh-add -A
+alias scalar_bundle='git archive --format=tar develop | gzip -9 > scalar-api.tar.gz'
+alias scalar_push='scp scalar-api.tar.gz jkalafut@scalar-api:/tmp/scalar-api.tar.gz'
+alias ta="task add"
+#function ta() {
+#   task add $*
+#}
