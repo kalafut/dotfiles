@@ -393,7 +393,7 @@ Plugin 'mxw/vim-jsx'
 "Plugin 'rust-lang/rust.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'jremmen/vim-ripgrep'
-
+Plugin 'blindFS/vim-taskwarrior'
 call vundle#end()
 filetype plugin indent on
 
