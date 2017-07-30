@@ -107,9 +107,19 @@ alias dc=docker-compose
 alias ta="task add"
 alias tr="task entry.after:today-3days"
 alias tph="task $* mod pri:H"
+alias tb="taskbridge"
 #function ta() {
 #   task add $*
 #}
+#
+
+fff() {
+   find . -name \*$1\*
+}
+
+fpf() {
+   find . -path \*$1\*
+}
 
 PATH="/Users/jameskalafut/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/jameskalafut/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
