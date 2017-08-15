@@ -512,7 +512,7 @@ endfunction
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 set mouse=a
-set clipboard=unnamed
+"set clipboard=unnamed
 "let g:ctrlp_working_path_mode = 'ra'
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
