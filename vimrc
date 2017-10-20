@@ -394,6 +394,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'jremmen/vim-ripgrep'
 Plugin 'blindFS/vim-taskwarrior'
+Plugin 'ConradIrwin/vim-bracketed-paste'
 call vundle#end()
 filetype plugin indent on
 
