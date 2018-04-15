@@ -546,6 +546,6 @@ nmap <CR> :write<CR>
 
 " NEW!!!!!!!!
 set path+=**
-
+let g:go_fold_enable = ['block', 'import', 'varconst' ]
 nmap <leader>bo :%bd<cr>:e#<cr>
 nmap <leader>fzf :FZF<cr>

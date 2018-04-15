@@ -117,7 +117,7 @@ fpf() {
 
 alias wx="curl wttr.in/pdx"
 
-PATH="/Users/jameskalafut/perl5/bin${PATH:+:${PATH}}"; export PATH;
+export PATH="/Users/kalafut/Library/Python/3.5/bin:/Users/jameskalafut/perl5/bin${PATH:+:${PATH}}"
 PERL5LIB="/Users/jameskalafut/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/jameskalafut/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/jameskalafut/perl5\""; export PERL_MB_OPT;
@@ -129,3 +129,18 @@ complete -o nospace -C /Users/kalafut/go/bin/vault vault
 export VAULT_ADDR=http://127.0.0.1:8200
 alias vsd="vault server -log-level=trace -dev -dev-root-token-id=root"
 alias rgr=rg -g "\!vendor" -g "\!website" $@
+# MOTD
+ function echo_color() {
+   local color="$1"
+   printf "${color}$2\033[0m\n"
+ }
+ echo_color "\033[0;90m" "c-f  Move forward"
+ echo_color "\033[0;90m" "c-b  Move backward"
+ echo_color "\033[0;90m" "c-p  Move up"
+ echo_color "\033[0;90m" "c-n  Move down"
+ echo_color "\033[0;90m" "c-a  Jump to beginning of line"
+ echo_color "\033[0;90m" "c-e  Jump to end of line"
+ echo_color "\033[0;90m" "c-d  Delete forward"
+ echo_color "\033[0;90m" "c-h  Delete backward"
+ echo_color "\033[0;90m" "c-k  Delete forward to end of line"
+ echo_color "\033[0;90m" "c-u  Delete entire line"

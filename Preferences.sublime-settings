@@ -1,7 +1,10 @@
 {
+	"folder_exclude_patterns":
+	[
+		".eggs"
+	],
 	"ignored_packages":
 	[
 		"Vintage"
-	],
-	"folder_exclude_patterns": [".eggs"]
+	]
 }
