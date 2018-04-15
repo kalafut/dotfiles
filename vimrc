@@ -38,6 +38,7 @@ nmap <leader>w :w!<cr>
 " Switch to alternate file
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
+map ,d :GoDef<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -346,11 +347,11 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'kalafut/vim-taskjuggler'
+"Plugin 'kalafut/vim-taskjuggler'
 
 " Snippets
 "Plugin 'SirVer/ultisnips'
-Plugin 'vimwiki/vimwiki'
+"Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-sleuth'
 Plugin 'honza/vim-snippets'
 set rtp+=~/.vim/bundle/vim-snippets/UltiSnips
@@ -372,13 +373,13 @@ Plugin 'mileszs/ack.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'bitc/vim-bad-whitespace'
+Plugin 'fatih/vim-go'
 Plugin 'ervandew/supertab'
 Plugin 'mattn/emmet-vim'
 Plugin 'groenewege/vim-less'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'bling/vim-airline'
 Plugin 'sampsyo/autolink.vim'
-Plugin 'fatih/vim-go'
 Plugin 'scrooloose/syntastic'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jason0x43/vim-js-indent'
@@ -393,8 +394,13 @@ Plugin 'mxw/vim-jsx'
 "Plugin 'rust-lang/rust.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'jremmen/vim-ripgrep'
-Plugin 'blindFS/vim-taskwarrior'
+"Plugin 'blindFS/vim-taskwarrior'
 Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'fatih/vim-hclfmt'
+Plugin 'b4b4r07/vim-hcl'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -403,9 +409,9 @@ let g:go_fmt_command = "goimports"
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -428,7 +434,6 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=DejaVu\ Sans\ Mono:h14
     set gfn=Source\ Code\ Pro:h14
 
 endif
@@ -541,3 +546,6 @@ nmap <CR> :write<CR>
 
 " NEW!!!!!!!!
 set path+=**
+
+nmap <leader>bo :%bd<cr>:e#<cr>
+nmap <leader>fzf :FZF<cr>

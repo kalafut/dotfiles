@@ -86,12 +86,6 @@ gpip(){
    PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
 
-export PYTHONDONTWRITEBYTECODE=True
-export PIP_REQUIRE_VIRTUALENV=true
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
-
 . ~/bin/z.sh
 
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
@@ -129,3 +123,9 @@ PERL_LOCAL_LIB_ROOT="/Users/jameskalafut/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOC
 PERL_MB_OPT="--install_base \"/Users/jameskalafut/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/jameskalafut/perl5"; export PERL_MM_OPT;
 
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/kalafut/go/bin/vault vault
+export VAULT_ADDR=http://127.0.0.1:8200
+alias vsd="vault server -log-level=trace -dev -dev-root-token-id=root"
+alias rgr=rg -g "\!vendor" -g "\!website" $@
