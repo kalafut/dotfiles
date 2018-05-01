@@ -128,7 +128,8 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /Users/kalafut/go/bin/vault vault
 export VAULT_ADDR=http://127.0.0.1:8200
 alias vsd="vault server -log-level=trace -dev -dev-root-token-id=root"
-alias rgr=rg -g "\!vendor" -g "\!website" $@
+alias vsdc="vault server -log-level=trace -dev -dev-root-token-id=root --config=config.hcl"
+alias rgr="rg -g !vendor -g !website -g !ui $@"
 # MOTD
  function echo_color() {
    local color="$1"
@@ -144,3 +145,6 @@ alias rgr=rg -g "\!vendor" -g "\!website" $@
  echo_color "\033[0;90m" "c-h  Delete backward"
  echo_color "\033[0;90m" "c-k  Delete forward to end of line"
  echo_color "\033[0;90m" "c-u  Delete entire line"
+
+#export LD_LIBRARY_PATH=/Users/kalafut/Downloads/instantclient_12_2
+#export PKG_CONFIG_PATH=/Users/kalafut/Downloads/instantclient_12_2

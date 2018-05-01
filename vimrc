@@ -368,7 +368,6 @@ Plugin 'L9'
 Plugin 'scrooloose/nerdtree'
 Plugin 'firat/vim-bufexplorer'
 Plugin 'vim-scripts/Colour-Sampler-Pack'
-"Plugin 'Align'
 Plugin 'mileszs/ack.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -383,10 +382,6 @@ Plugin 'sampsyo/autolink.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jason0x43/vim-js-indent'
-Plugin 'vim-scripts/jam.vim'
-"Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'davidoc/taskpaper.vim'
-Plugin 'kalafut/vim-sift'
 Plugin 'cespare/vim-toml'
 Plugin 'ledger/vim-ledger'
 Plugin 'mxw/vim-jsx'
@@ -548,4 +543,4 @@ nmap <CR> :write<CR>
 set path+=**
 let g:go_fold_enable = ['block', 'import', 'varconst' ]
 nmap <leader>bo :%bd<cr>:e#<cr>
-nmap <leader>fzf :FZF<cr>
+nmap <leader>f :FZF<cr>
