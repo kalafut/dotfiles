@@ -1,0 +1,54 @@
+;; -*- mode: elisp -*-
+
+;; Disable the splash screen (to enable it agin, replace the t with 0)
+(setq inhibit-splash-screen t)
+
+;; Enable transient mark mode
+(transient-mark-mode 1)
+
+;;;;Org mode configuration
+;; Enable Org mode
+(require 'org)
+;; Make Org mode work with files ending in .org
+;; (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;; The above is the default in recent emacsen
+(setq org-todo-keywords
+  '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+ '(custom-enabled-themes (quote (deeper-blue)))
+ '(org-agenda-files (quote ("~/Dropbox/org/azure_secrets.org" "~/2.org")))
+ '(package-selected-packages (quote (use-package org-bullets evil))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(global-auto-revert-mode 1)
+
+(require 'package)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+  (package-initialize)
+(require 'evil)
+  (evil-mode 1)
+(require 'use-package)
+
+(use-package org-bullets
+:ensure t
+:init
+;(setq org-bullets-bullet-list
+;'("◉" "◎" "⚫" "○" "►" "◇"))
+:config
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))

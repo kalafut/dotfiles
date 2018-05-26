@@ -128,7 +128,7 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /Users/kalafut/go/bin/vault vault
 export VAULT_ADDR=http://127.0.0.1:8200
 alias vsd="vault server -log-level=trace -dev -dev-root-token-id=root"
-alias vsdc="vault server -log-level=trace -dev -dev-root-token-id=root --config=config.hcl"
+alias vsdc="vault server -log-level=trace -dev -dev-root-token-id=root --config=$HOME/dev/config.hcl"
 alias rgr="rg -g !vendor -g !website -g !ui $@"
 # MOTD
  function echo_color() {
@@ -148,3 +148,10 @@ alias rgr="rg -g !vendor -g !website -g !ui $@"
 
 #export LD_LIBRARY_PATH=/Users/kalafut/Downloads/instantclient_12_2
 #export PKG_CONFIG_PATH=/Users/kalafut/Downloads/instantclient_12_2
+alias uuidgen='python -c "import uuid;print str(uuid.uuid4()).lower()" | tee /dev/tty | pbcopy'
+
+W=$HOME/prj/waiwo2/waiwo.1s.sh
+alias w=$W
+alias wt="$W top"
+alias wp="$W push $@"
+alias wpp="$W pop"

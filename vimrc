@@ -431,6 +431,7 @@ if has("gui_running")
     set guitablabel=%M\ %t
     set gfn=Source\ Code\ Pro:h14
 
+    set linespace=0  "increase this for some fonts if needed
 endif
 
 
@@ -541,7 +542,8 @@ nmap <CR> :write<CR>
 
 " NEW!!!!!!!!
 set path+=**
-" let g:go_fold_enable = ['block', 'import', 'varconst' ]
+let g:go_fold_enable = ['block', 'import', 'varconst' ]
 nmap <leader>bo :%bd<cr>:e#<cr>
 nmap <leader>f :FZF<cr>
 set foldmethod=syntax
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
