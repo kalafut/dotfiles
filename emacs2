@@ -29,6 +29,7 @@
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(custom-enabled-themes (quote (deeper-blue)))
  '(org-agenda-files (quote ("~/Dropbox/org/azure_secrets.org" "~/2.org")))
+ '(org-startup-truncated nil)
  '(package-selected-packages (quote (use-package org-bullets evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -52,3 +53,4 @@
 ;'("◉" "◎" "⚫" "○" "►" "◇"))
 :config
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(define-key evil-normal-state-map (kbd "RET") 'save-buffer)
