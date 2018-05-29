@@ -1,0 +1,81 @@
+[core]
+	excludesfile = /Users/kalafut/.gitignore_global
+	editor = vim
+[merge]
+	tool = kdiff3
+[mergetool "kdiff3"]
+	cmd = kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
+[diff]
+	tool = kdiff3
+	guitool = kdiff3
+[difftool "kdiff3"]
+	cmd = kdiff3 \"$LOCAL\" \"$REMOTE\"
+	path = /usr/local/bin/kdiff3
+[user]
+	name = Jim Kalafut
+	email = jim@kalafut.net
+[include]
+	path = ~/.git_work_config
+[alias]
+	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	lg = !git lg1
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	cp = cherry-pick
+	fp = fetch -p
+	df = diff
+	dfc = diff --cached
+	dt = difftool
+	dtc = difftool --cached
+	mff = merge --ff-only origin/master
+	pff = pull --ff-only
+	mt = mergetool
+	shn = show --name-only
+	suri = submodule update --recursive --init
+	alg = log -p
+	lu = log --author=jkalafut@cylance.com --all
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lolu = log --graph --decorate --oneline --after={1.week.ago} --author=jkalafut@cylance.com --all
+	ls = ls-files
+	aa = !git ls-files -d | xargs -r git rm && git ls-files -m -o --exclude-standard | xargs -r git add
+	ag = !sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs -r git add' -
+	bg = !sh -c 'git ls-files | grep $1 | xargs -r git blame' -
+	brdg = !sh -c 'git br | grep $1 | xargs -r git br -D' -
+	cog = !sh -c 'git ls-files -m | grep $1 | xargs -r git checkout' -
+	dfg = !sh -c 'git ls-files -m | grep $1 | xargs -r git diff' -
+	dtg = !sh -c 'git ls-files -m | grep $1 | xargs -r git difftool' -
+	dthg = !sh -c 'perl.exe Tools/diff_file_history.pl $1' -
+	isg = !sh -c 'git ls-files | grep $1 | xargs -r git update-index --assume-unchanged' -
+	iug = !sh -c 'git ls-files | grep $1 | xargs -r git update-index --no-assume-unchanged' -
+	lgg = !sh -c 'git ls-files | grep $1 | xargs -r git log -p' -
+	lsg = !sh -c 'git ls-files | grep $1 | xargs -r git log -p -S$2' -
+	mtg = !sh -c 'git ls-files -m | grep $1 | xargs -r git mergetool' -
+	pg = !sh -c 'git ls-files -m | grep $1 | xargs -r git diff --cached' -
+	rmg = !sh -c 'git ls-files -d | grep $1 | xargs -r git rm' -
+	rsg = !sh -c 'git ls-files -c --with-tree=HEAD | grep $1 | xargs -r git reset HEAD -- ' -
+	wip = !sh -c 'git aa && git commit -m \"wip\"'
+	showdt = "!sh -c 'git difftool $1^ $1 -- $2' - "
+	dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd $GIT_PREFIX; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/kalafut/.stCommitMsg
