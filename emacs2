@@ -63,3 +63,4 @@
 :config
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 (define-key evil-normal-state-map (kbd "RET") 'save-buffer)
+(setq org-log-done 'time)
