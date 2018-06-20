@@ -279,9 +279,6 @@ map <F3> <ESC>:TlistToggle<RETURN>
 " When you press gv you vimgrep after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
-" Open vimgrep and put the cursor in the right position
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
 " Vimgreps in the current file
 map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
@@ -547,3 +544,8 @@ nmap <leader>bo :%bd<cr>:e#<cr>
 nmap <leader>f :FZF<cr>
 set foldmethod=syntax
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+"""""""""""""""""""
+" Go shortcuts
+"""""""""""""""""""
+imap <leader>msi map[string]interface{}

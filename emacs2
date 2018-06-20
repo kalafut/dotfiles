@@ -28,9 +28,10 @@
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(custom-enabled-themes (quote (wheatgrass)))
+ '(epg-gpg-program "/usr/local/bin/gpg")
  '(org-agenda-files
    (quote
-    ("~/Dropbox/org/azure_secrets.org" "~/Dropbox/org/dev.org" "~/Dropbox/org/home.org" "~/Dropbox/org/journal.org" "~/Dropbox/org/oas.org" "~/Dropbox/org/refile-beorg.org" "~/Dropbox/org/reviews.org" "~/Dropbox/org/work.org")))
+    ("~/Dropbox/org/dev.org" "~/Dropbox/org/home.org" "~/Dropbox/org/journal.org" "~/Dropbox/org/oas.org" "~/Dropbox/org/refile-beorg.org" "~/Dropbox/org/work.org" "~/Dropbox/org/capture.org")))
  '(org-startup-truncated nil)
  '(package-selected-packages (quote (use-package org-bullets evil))))
 (custom-set-faces
@@ -59,3 +60,7 @@
 (setq org-log-done 'time)
 (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
 (set-face-attribute 'default nil :font "-outline-Source Code Pro-normal-normal-normal-mono-14-*-*-*-c-*-iso8859-1" )
+
+(setq org-default-notes-file "~/Dropbox/org/capture.org")
+
+(add-hook 'auto-save-hook 'org-save-all-org-buffers)

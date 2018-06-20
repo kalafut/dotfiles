@@ -151,7 +151,6 @@ alias rgr="rg -g !vendor -g !website -g !ui $@"
 alias uuidgen='python -c "import uuid;print str(uuid.uuid4()).lower()" | tee /dev/tty | pbcopy'
 
 W=$HOME/prj/waiwo2/waiwo.1s.sh
-alias w=$W
-alias wt="$W top"
-alias wp="$W push $@"
-alias wpp="$W pop"
+alias wtop="$W top"
+alias wpush="$W push $@"
+alias wpop="$W pop"
