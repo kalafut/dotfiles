@@ -350,41 +350,32 @@ call vundle#begin()
 "Plugin 'SirVer/ultisnips'
 "Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-sleuth'
-Plugin 'honza/vim-snippets'
-set rtp+=~/.vim/bundle/vim-snippets/UltiSnips
+"Plugin 'honza/vim-snippets'
+"set rtp+=~/.vim/bundle/vim-snippets/UltiSnips
 
-Plugin 'rizzatti/dash.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'rking/ag.vim'
-Plugin 'dimasg/vim-mark'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'jelera/vim-javascript-syntax'
 Plugin 'tpope/vim-fugitive'
-Plugin 'L9'
+"Plugin 'L9'
 Plugin 'scrooloose/nerdtree'
-Plugin 'firat/vim-bufexplorer'
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/Colour-Sampler-Pack'
-Plugin 'mileszs/ack.vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'fatih/vim-go'
-Plugin 'ervandew/supertab'
-Plugin 'mattn/emmet-vim'
-Plugin 'groenewege/vim-less'
+"Plugin 'ervandew/supertab'
+"Plugin 'mattn/emmet-vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'bling/vim-airline'
-Plugin 'sampsyo/autolink.vim'
+"Plugin 'sampsyo/autolink.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'jason0x43/vim-js-indent'
-Plugin 'cespare/vim-toml'
 Plugin 'ledger/vim-ledger'
 Plugin 'mxw/vim-jsx'
 "Plugin 'chrisbra/csv.vim'
 "Plugin 'rust-lang/rust.vim'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'jremmen/vim-ripgrep'
 "Plugin 'blindFS/vim-taskwarrior'
 Plugin 'ConradIrwin/vim-bracketed-paste'
@@ -392,10 +383,12 @@ Plugin 'fatih/vim-hclfmt'
 Plugin 'b4b4r07/vim-hcl'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+"Plugin 'w0rp/ale'
 
 call vundle#end()
 filetype plugin indent on
 
+let g:ale_lint_on_text_changed = "never"
 let g:go_fmt_command = "goimports"
 "let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
@@ -544,6 +537,8 @@ nmap <leader>bo :%bd<cr>:e#<cr>
 nmap <leader>f :FZF<cr>
 set foldmethod=syntax
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+nmap <leader>fs /^}<cr>%:noh<cr>
 
 """""""""""""""""""
 " Go shortcuts
