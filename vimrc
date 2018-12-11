@@ -55,7 +55,7 @@ set wildignore+=*/eggs/*
 if has("win16") || has("win32")
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
-    set wildignore+=.git\*,.hg\*,.svn\*,*/node_modules/*,*/lib/*,*/bin/*
+    set wildignore+=.git\*,.hg\*,.svn\*,*/node_modules/*,*/lib/*
 endif
 
 "Always show current position
@@ -238,6 +238,7 @@ set laststatus=2
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ Col:\ %c
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
