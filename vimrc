@@ -348,10 +348,10 @@ call vundle#begin()
 "Plugin 'kalafut/vim-taskjuggler'
 
 " Snippets
-"Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+":Plugin 'sirver/ultisnips'
 "Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-sleuth'
-"Plugin 'honza/vim-snippets'
 "set rtp+=~/.vim/bundle/vim-snippets/UltiSnips
 
 Plugin 'tpope/vim-surround'
@@ -366,7 +366,7 @@ Plugin 'vim-scripts/Colour-Sampler-Pack'
 "Plugin 'tomtom/tlib_vim'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'fatih/vim-go'
-"Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 "Plugin 'mattn/emmet-vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'bling/vim-airline'
@@ -384,6 +384,7 @@ Plugin 'fatih/vim-hclfmt'
 Plugin 'b4b4r07/vim-hcl'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+"Plugin 'zxqfl/tabnine-vim'
 "Plugin 'w0rp/ale'
 
 call vundle#end()
@@ -398,6 +399,10 @@ let g:go_fmt_command = "goimports"
 " let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c-b>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -545,3 +550,6 @@ nmap <leader>fs /^}<cr>%:noh<cr>
 " Go shortcuts
 """""""""""""""""""
 imap <leader>msi map[string]interface{}
+let g:go_gocode_propose_source=0
+
+set timeoutlen=250
