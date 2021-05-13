@@ -394,6 +394,8 @@ filetype plugin indent on
 
 let g:ale_lint_on_text_changed = "never"
 let g:go_fmt_command = "goimports"
+let g:syntastic_javascript_checkers = ['eslint']
+
 "let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
@@ -403,8 +405,8 @@ let g:go_fmt_command = "goimports"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
+"let g:UltiSnipsExpandTrigger="<Tab>"
+"let g:UltiSnipsJumpForwardTrigger="<Tab>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -528,8 +530,8 @@ map <leader>ren :GoRename<cr>
 
 " Set per-fileype indentation
 "Disable if vim-sleuth works
-"autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-"autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
 autocmd FileType Python setlocal tabstop=4
 
 " CR to save file
