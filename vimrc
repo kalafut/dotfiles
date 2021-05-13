@@ -345,10 +345,10 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"Plugin 'kalafut/vim-taskjuggler'
+Plugin 'kalafut/vim-taskjuggler'
 
 " Snippets
-Plugin 'honza/vim-snippets'
+"Plugin 'honza/vim-snippets'
 ":Plugin 'sirver/ultisnips'
 "Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-sleuth'
@@ -365,10 +365,10 @@ Plugin 'vim-scripts/Colour-Sampler-Pack'
 "Plugin 'MarcWeber/vim-addon-mw-utils'
 "Plugin 'tomtom/tlib_vim'
 Plugin 'bitc/vim-bad-whitespace'
-Plugin 'fatih/vim-go'
 Plugin 'ervandew/supertab'
 "Plugin 'mattn/emmet-vim'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'kalafut/vim-markdown'
 Plugin 'bling/vim-airline'
 "Plugin 'sampsyo/autolink.vim'
 Plugin 'scrooloose/syntastic'
@@ -384,6 +384,8 @@ Plugin 'fatih/vim-hclfmt'
 Plugin 'b4b4r07/vim-hcl'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'fatih/vim-go'
+"Plugin 'rhysd/vim-crystal'
 "Plugin 'zxqfl/tabnine-vim'
 "Plugin 'w0rp/ale'
 
@@ -426,6 +428,7 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
     set gfn=Source\ Code\ Pro:h14
+    "set gfn=Go\ Mono:h16
 
     set linespace=0  "increase this for some fonts if needed
 endif
@@ -529,10 +532,6 @@ map <leader>ren :GoRename<cr>
 "autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
 autocmd FileType Python setlocal tabstop=4
 
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-"let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
-:nmap <Leader>wf <Plug>VimwikiFollowLink
-
 " CR to save file
 nmap <CR> :write<CR>
 
@@ -546,10 +545,20 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 nmap <leader>fs /^}<cr>%:noh<cr>
 
+
+" nmap <leader>f :gZF<cr>
+
 """""""""""""""""""
 " Go shortcuts
 """""""""""""""""""
 imap <leader>msi map[string]interface{}
+imap <leader>err if err!=nil{return err}
+
 let g:go_gocode_propose_source=0
 
 set timeoutlen=250
+
+let vim_markdown_preview_github=1
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'

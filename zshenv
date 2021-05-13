@@ -19,5 +19,6 @@ export FINIKI_ROOT=$HOME/Dropbox/finiki
 #
 # TODO: fix path
 export GOPATH=$HOME/go
-export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Frameworks/Mono.framework/Versions/Current/bin/:/usr/local/go/bin:/opt/openresty/nginx/sbin:$GOPATH/bin
+export PATH=$HOME/bin:$HOME/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Frameworks/Mono.framework/Versions/Current/bin/:/usr/local/go/bin:/opt/openresty/nginx/sbin:$GOPATH/bin
+export PATH=$PATH:/Users/kalafut/Library/Python/3.7/bin
 export VISUAL=vim

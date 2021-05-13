@@ -4,19 +4,23 @@
 [merge]
 	tool = kdiff3
 [mergetool "kdiff3"]
-	cmd = kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	#cmd = kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 	trustExitCode = true
 [diff]
 	tool = kdiff3
 	guitool = kdiff3
 [difftool "kdiff3"]
-	cmd = kdiff3 \"$LOCAL\" \"$REMOTE\"
-	path = /usr/local/bin/kdiff3
+	#cmd = kdiff3 \"$LOCAL\" \"$REMOTE\"
+	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 [user]
 	name = Jim Kalafut
-	email = jim@kalafut.net
+	#email = jim@kalafut.net
+	email = jkalafut@hashicorp.com
 [include]
 	path = ~/.git_work_config
+[branch]
+	sort=-committerdate # Sort branches by last commit date, descending.
 [alias]
 	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
@@ -61,6 +65,7 @@
 	wip = !sh -c 'git aa && git commit -m \"wip\"'
 	showdt = "!sh -c 'git difftool $1^ $1 -- $2' - "
 	dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd $GIT_PREFIX; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+	recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52

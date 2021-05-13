@@ -1,14 +1,20 @@
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  )
+;; -*- mode: elisp -*-
+
+(require 'package)
+
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+
+(setq package-enable-at-startup nil)
+(package-initialize)
 
 (tool-bar-mode -1)
 
+(evil-mode 1)
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
-(evil-mode 1)
+(define-key evil-normal-state-map (kbd "RET") 'save-buffer)
 (require 'evil-org)
 (add-hook 'org-mode-hook
           (lambda ()
@@ -19,7 +25,6 @@
 (setq sunshine-location "97140,USA")
 (setq sunshine-show-icons t)
 
-
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (helm-mode 1)
@@ -29,6 +34,8 @@
 
 
 ;Org stuff to review and fix later
+;;(setq org-todo-keywords
+;;  '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
 (setq org-directory "~/Dropbox/org")
 (setq org-mobile-directory "~/Dropbox/org_mobile")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -46,18 +53,28 @@
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
+(use-package org-bullets
+:ensure t
+:init
+;(setq org-bullets-bullet-list
+;'("◉" "◎" "⚫" "○" "►" "◇"))
+:config
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 (load-theme 'wheatgrass)
 
-(set-default-font "Ubuntu Mono 16")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Dropbox/org/home.org" "~/Dropbox/org/work.org"))))
+ '(org-agenda-files '("~/Dropbox/org/home.org" "~/Dropbox/org/work.org"))
+ '(package-selected-packages
+   '(org-bullets use-package sunshine helm evil-org evil-leader))
+ '(tool-bar-mode nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Source Code Pro" :foundry "nil" :slant normal :weight normal :height 181 :width normal)))))

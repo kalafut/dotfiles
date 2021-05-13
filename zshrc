@@ -118,7 +118,7 @@ PERL_MM_OPT="INSTALL_BASE=/Users/jameskalafut/perl5"; export PERL_MM_OPT;
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /Users/kalafut/go/bin/vault vault
-export VAULT_ADDR=http://127.0.0.1:8200
+export VAULT_ADDR=https://127.0.0.1:8200
 alias vsd="vault server -log-level=trace -dev -dev-root-token-id=root"
 alias vsdc="vault server -log-level=trace -dev -dev-root-token-id=root --config=$HOME/dev/config.hcl"
 alias rgr="rg -g !vendor -g !website -g !ui $@"
@@ -126,12 +126,12 @@ alias rgr="rg -g !vendor -g !website -g !ui $@"
 alias vrd="VAULT_REDIRECT_ADDR=http://127.0.0.1:8200 vault server -log-level=trace -dev -dev-root-token-id=root -dev-ha -dev-transactional"
 alias vrd2="VAULT_REDIRECT_ADDR=http://127.0.0.1:8202 vault server -log-level=trace -dev -dev-root-token-id=root -dev-listen-address=127.0.0.1:8202 -dev-ha -dev-transactional"
 vault2 () {
-  VAULT_ADDR=http://127.0.0.1:8202 vault $@
+  VAULT_ADDR=https://127.0.0.1:8202 vault $@
 }
 
 #export LD_LIBRARY_PATH=/Users/kalafut/Downloads/instantclient_12_2
 #export PKG_CONFIG_PATH=/Users/kalafut/Downloads/instantclient_12_2
-alias uuidgen='python -c "import uuid;print str(uuid.uuid4()).lower()" | tee /dev/tty | pbcopy'
+alias uuidgen='python -c "import uuid;print(str(uuid.uuid4()).lower())," | tee /dev/tty | pbcopy'
 
 W=$HOME/prj/waiwo2/waiwo.1s.sh
 alias wtop="$W top"
@@ -141,10 +141,56 @@ alias wpop="$W pop"
 alias go-1.10.4=$HOME/go-1.10.4/bin/go
 alias go-1.11=$HOME/go-1.11/bin/go
 #export PATH="$HOME/go-1.10.4/bin:$PATH"
-export PATH="$HOME/go-1.11.2/bin:$PATH"
-alias hg="history | grep $@"
+#export PATH="$HOME/go-1.11.2/bin:$PATH"
 #export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
+#
+
+hg() {
+  cmd='history'
+  for var in "$@"
+  do
+    cmd="$cmd | grep -i $var "
+  done
+  eval $cmd
+}
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #export PATH="$PATH:$HOME/.rvm/bin"
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
+
+#source ".todoist_functions.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+export GOPROXY=https://proxy.golang.org
+export GOPRIVATE=github.com/hashicorp
+
+alias tfa="terraform apply"
+alias tfi="terraform init"
+alias tfd="terraform destroy"
+
+VIM_APP="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias vim=$VIM_APP
+alias gvim="$VIM_APP -g"
+
+#export GOENV_DISABLE_GOPATH=1
+#eval "$(goenv init -)"
+
+#source /Users/kalafut/Library/Preferences/org.dystroy.broot/launcher/bash/br
+
+source $HOME/.oh-my-zsh/custom/plugins/zsh-histdb/sqlite-history.zsh
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd histdb-update-outcome
+
+alias vr="vault login root"
+export PATH="/usr/local/opt/openldap/bin:$PATH"
+export PATH="/usr/local/opt/openldap/sbin:$PATH"
+export PATH="/usr/local/opt/openldap/libexec:$PATH"
+export PGDATA='/usr/local/var/postgres'
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
