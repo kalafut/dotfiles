@@ -1,4 +1,0 @@
-#! /bin/bash
-
-shift
-$TODO_FULL_SH ls "$@" | head -n 15
