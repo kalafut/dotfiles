@@ -13,13 +13,20 @@
 
 (evil-mode 1)
 (global-evil-leader-mode)
+
+
+
 (evil-leader/set-leader ",")
+
 (define-key evil-normal-state-map (kbd "RET") 'save-buffer)
-(require 'evil-org)
+
+;(require 'evil-org)
 (add-hook 'org-mode-hook
           (lambda ()
             (org-indent-mode t))
           t)
+;(evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))
+
 (savehist-mode 1)
 (require 'sunshine)
 (setq sunshine-location "97140,USA")
@@ -33,22 +40,18 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
-;Org stuff to review and fix later
 ;;(setq org-todo-keywords
 ;;  '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
 (setq org-directory "~/Dropbox/org")
-(setq org-mobile-directory "~/Dropbox/org_mobile")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq org-mobile-inbox-for-pull "~/Dropbox/org_mobile/inbox.org")
-(setq org-mobile-files '("~/Dropbox/org/home.org" "~/Dropbox/org/work.org"))
 
 ;; Org mode setup
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-(define-key evil-insert-state-map [remap newline] 'newline)
-(define-key evil-insert-state-map [remap newline-and-indent] 'newline-and-indent)
+;(define-key evil-insert-state-map [remap newline] 'newline)
+;(define-key evil-insert-state-map [remap newline-and-indent] 'newline-and-indent)
 
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
@@ -56,8 +59,8 @@
 (use-package org-bullets
 :ensure t
 :init
-;(setq org-bullets-bullet-list
-;'("◉" "◎" "⚫" "○" "►" "◇"))
+(setq org-bullets-bullet-list
+ '("◉" "◎" "⚫" "○" "►" "◇"))
 :config
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 (load-theme 'wheatgrass)
@@ -78,3 +81,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "nil" :slant normal :weight normal :height 181 :width normal)))))
+
+(global-set-key (kbd "M-o")  'mode-line-other-buffer)
