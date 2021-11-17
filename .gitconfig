@@ -82,7 +82,7 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[commit]
-	template = /Users/kalafut/.stCommitMsg
+#[commit]
+#	template = /Users/kalafut/.stCommitMsg
 [url "git@github.com:"]
 	insteadOf = https://github.com/
