@@ -152,3 +152,15 @@ alias gvim="$VIM_APP -g"
 export PGDATA='/usr/local/var/postgres'
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+export VAULT_ADDR=https://127.0.0.1:8200
+alias vsd="vault server -log-level=trace -dev -dev-root-token-id=root"
+alias vsdc="vault server -log-level=trace -dev -dev-root-token-id=root --config=$HOME/dev/config.hcl"
+alias rgr="rg -g !vendor -g !website -g !ui $@"
+
+alias vrd="VAULT_REDIRECT_ADDR=http://127.0.0.1:8200 vault server -log-level=trace -dev -dev-root-token-id=root -dev-ha -dev-transactional"
+alias vrd2="VAULT_REDIRECT_ADDR=http://127.0.0.1:8202 vault server -log-level=trace -dev -dev-root-token-id=root -dev-listen-address=127.0.0.1:8202 -dev-ha -dev-transactional"
+vault2 () {
+  VAULT_ADDR=https://127.0.0.1:8202 vault $@
+}
+
